@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text , StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
+import {View, Text , StyleSheet, TouchableOpacity} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,18 +9,15 @@ import store from './src/Redux/Store'
 
 import Counter from './src/screens/Counter';
 
-
 function HomeScreen({navigation}){
     return(
-        <ScrollView style={{flex: 1, marginTop:50}}>
-
+        <View style={{flex: 1}>
             <View style={styles.viewButton}>
               <TouchableOpacity onPress={()=> navigation.navigate('Counter')}>
                 <Text style={styles.viewText}>Counter</Text>
               </TouchableOpacity>
             </View>
-
-        </ScrollView>
+        </View>
     );
 } 
 
@@ -49,6 +46,7 @@ function App(){
     <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeScreen}/>
             <Stack.Screen name="Counter" component={Counter}/>
           </Stack.Navigator>
         </NavigationContainer>
